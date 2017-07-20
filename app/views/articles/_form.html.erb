@@ -1,16 +1,5 @@
 <%= form_with(model: article, local: true) do |form| %>
-  <% if article.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
-
-      <ul>
-      <% article.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+  
   <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title, id: :article_title %>
@@ -21,7 +10,20 @@
   </div>
 <% end %>
 
+
+
+
+    <div class="container">
+    <div class="col-md-4"></div>
+    <div class="col-md-12">
+
  <% @articles.each do |article| %>
+
+
+      <a href=""><img src="images/Generic-profile-image.png" class="img" alt="Cinque Terre" width="60" hight="60"></a><a href="">User Name</a>
+      <br/>
+      <div class="well well-sm  ">
+        
 
 
 <p>
@@ -29,6 +31,25 @@
   <%= article.title %>
 </p>
 
+
+      </div>
+      <div class="well well-sm  ">
+        <a href="">
+        some link
+        </a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="">
+        some link
+        </a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="">
+        some link
+        </a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="">
+        some link
+        </a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="">
+        some link
+        </a>&nbsp;&nbsp;&nbsp;&nbsp;
+      </div>
 
 
 <h2>Endorses</h2>
@@ -61,11 +82,7 @@
 <% end %>
 
 
-
-
- <%end%>
-
-
-
-
-
+      <%end%>
+    </div>
+    <div>
+  
