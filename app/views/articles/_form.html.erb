@@ -1,0 +1,71 @@
+<%= form_with(model: article, local: true) do |form| %>
+  <% if article.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+      <ul>
+      <% article.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :article_title %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+ <% @articles.each do |article| %>
+
+
+<p>
+  <strong>Title:</strong>
+  <%= article.title %>
+</p>
+
+
+
+<h2>Endorses</h2>
+<% article.endorses.each do |endorse| %>
+  <p>
+    <strong>title:</strong>
+    <%= endorse.title %>
+  </p>
+ 
+  <p>
+    <strong>body:</strong>
+    <%= endorse.body %>
+  </p>
+<% end %>
+ 
+    
+<h2>Add a endorse:</h2>
+<%= form_for([article, article.endorses.build]) do |f| %>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :body %><br>
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+
+
+
+ <%end%>
+
+
+
+
+

@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @article.title %>
+</p>
+
+
+
+<h2>Endorses</h2>
+<% @article.endorses.each do |endorse| %>
+  <p>
+    <strong>title:</strong>
+    <%= endorse.title %>
+  </p>
+ 
+  <p>
+    <strong>body:</strong>
+    <%= endorse.body %>
+  </p>
+<% end %>
+ 
+<h2>Add a endorse:</h2>
+<%= form_for([@article, @article.endorses.build]) do |f| %>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :body %><br>
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+
+
+
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<%= link_to 'Back', articles_path %>
