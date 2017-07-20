@@ -28,6 +28,7 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
 
+ @article.user_id=current_user.id
     respond_to do |format|
       if @article.save
         format.html { redirect_to new_article_path, notice: 'Article was successfully created.' }
