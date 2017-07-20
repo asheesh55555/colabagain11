@@ -4,6 +4,16 @@
     <%= form.label :title %>
     <%= form.text_field :title, id: :article_title %>
   </div>
+            <%= form.label :Tag %><br>
+              <select multiple class="js-example-basic-multiple"   name="vvv[]"
+                style="width: 11.75em;">
+                              <% @users.each do |user| %>
+                        <option value= "<%=user.id%>"><%=user.email%></option>
+                              <% end %>
+
+                        </select>
+                
+
 
   <div class="actions">
     <%= form.submit %>
@@ -37,6 +47,14 @@
         <a href="">
         some link
         </a>&nbsp;&nbsp;&nbsp;&nbsp;
+
+<%= link_to 'Show', article %>&nbsp;&nbsp;&nbsp;&nbsp;
+          <%= link_to 'Edit', edit_article_path(article) %>&nbsp;&nbsp;&nbsp;&nbsp;
+          <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %>&nbsp;&nbsp;&nbsp;&nbsp;
+        
+
+         <button  onclick="endorses_click('<%=article.id%>');">Endorse</button>
+           &nbsp;&nbsp;&nbsp;&nbsp;
        
       
 
@@ -60,7 +78,7 @@
   </p>
 <% end %>
  
-    
+     <div class="endorse_form_<%=article.id %>" style='display: none;'>
 <h2>Add a endorse:</h2>
 <%= form_for([article, article.endorses.build]) do |f| %>
   <p>
@@ -75,9 +93,35 @@
     <%= f.submit %>
   </p>
 <% end %>
+</div>
 
 
       <%end%>
     </div>
     <div>
   
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+$(".js-example-basic-multiple").select2({
+            theme: "bootstrap",  multiple: true
+        });
+</script>
+
+
+
+
+<script>
+
+function endorses_click(argument) {
+
+   $(".endorse_form_"+ argument).toggle();
+}
+
+</script>

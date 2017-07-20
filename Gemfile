@@ -57,3 +57,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'acts_as_votable', '~> 0.10.0'
+gem "select2-rails"
+gem 'jquery-rails'

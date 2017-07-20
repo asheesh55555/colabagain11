@@ -16,7 +16,7 @@ class ArticlesController < ApplicationController
   def new
     @article = Article.new
      @articles = Article.all.order(created_at:  :desc)
-
+@users=User.all
   end
 
   # GET /articles/1/edit
@@ -31,6 +31,18 @@ class ArticlesController < ApplicationController
  @article.user_id=current_user.id
     respond_to do |format|
       if @article.save
+
+ @art_id= @article.id
+       @user_idss = params[:vvv ]
+       if @user_idss != nil
+         
+     
+        @user_idss.each do |userid|
+         Tagging.create(:user_id => userid,article_id: @art_id) 
+  
+        end
+          end
+
         format.html { redirect_to new_article_path, notice: 'Article was successfully created.' }
         format.json { render :show, status: :created, location: @article }
       else
