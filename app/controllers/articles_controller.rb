@@ -15,7 +15,7 @@ class ArticlesController < ApplicationController
   # GET /articles/new
   def new
     @article = Article.new
-     @articles = Article.all
+     @articles = Article.all.order(created_at:  :desc)
 
   end
 
@@ -63,6 +63,27 @@ class ArticlesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+    def upvote
+    
+      @article = Article.find(params[:id])
+      @article.liked_by current_user
+      redirect_to new_article_path
+  end
+
+ def downvote
+      @article = Article.find(params[:id])
+      @article.downvote_from current_user
+
+redirect_to new_article_path
+      
+  end
+
+
+
+  
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

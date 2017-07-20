@@ -37,18 +37,13 @@
         <a href="">
         some link
         </a>&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="">
-        some link
-        </a>&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="">
-        some link
-        </a>&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="">
-        some link
-        </a>&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="">
-        some link
-        </a>&nbsp;&nbsp;&nbsp;&nbsp;
+       
+      
+
+ <%= link_to "Like#{article.get_likes.size}", like_article_path(article), method: :put %>
+          <%= link_to "Dislike#{article.get_dislikes.size}", dislike_article_path(article), method: :put %>
+
+
       </div>
 
 
