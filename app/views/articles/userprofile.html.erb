@@ -1,0 +1,47 @@
+<% @users.each do |user| %>
+  <p>
+
+    <%= user.email %>
+
+
+
+    <%if Follow.where(follower_id: current_user.id, following_id: user.id).first.present?%>
+    <%= link_to "unfollow", article_unfollo_path(id: user.id.to_i) %>
+
+     
+<%else%>
+<%= link_to "follow", article_follo_path(id: user.id.to_i) %>
+  <%end%>
+  </p>
+
+<% end %>
+
+<% @users.each do |user| %>
+  <p>
+
+    <%= user.email %>
+
+
+
+   <%unless Friendship.where(friendable_id: current_user.id ,friend_id: user.id,pending: nil).first.present?   || Friendship.where(friendable_id: user.id ,friend_id:   current_user.id ,pending: false).first.present?%>
+    <%= link_to "add friend", article_invite_path(id: user.id.to_i) %>
+
+     <%end%>
+
+
+
+  </p>
+
+<% end %>
+
+
+<%@pendind_requests=Friendship.where(friend_id: current_user.id ,pending: nil)%>
+<% @pendind_requests.each do |pdr| %>
+    <%= "u have a friend request from #{User.find(pdr.friendable_id).email }" %>
+
+     <%= link_to "accept", article_approve_path(ida: User.find(pdr.friendable_id).id) %>
+      <%= link_to "delete", article_delete_request_path(ida: User.find(pdr.friendable_id).id) %>
+
+<% end %>
+
+  <%= link_to "all friends", article_all_frinds_path %>

@@ -1,3 +1,5 @@
+
+ <%= link_to "profile", article_userprof_path %>
 <%= form_with(model: article, local: true) do |form| %>
   
   <div class="field">
@@ -51,7 +53,7 @@
 <%= link_to 'Show', article %>&nbsp;&nbsp;&nbsp;&nbsp;
           <%= link_to 'Edit', edit_article_path(article) %>&nbsp;&nbsp;&nbsp;&nbsp;
           <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %>&nbsp;&nbsp;&nbsp;&nbsp;
-        
+
 
          <button  onclick="endorses_click('<%=article.id%>');">Endorse</button>
            &nbsp;&nbsp;&nbsp;&nbsp;

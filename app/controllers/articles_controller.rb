@@ -91,8 +91,45 @@ redirect_to new_article_path
       
   end
 
+  def userprofile
+      @users = User.all.where.not(id: current_user)
+  end
+  def invite
+    Friendship.create( friendable_id: current_user.id,friend_id: params[:id].to_i ,pending: nil)
+    flash[:notice] = "friend request sent to #{User.where(id: params[:id].to_i).first.email}"
+    redirect_to article_userprof_path
+  end
+  def approve
 
+    current_user.approve (User.find(params[:ida]))
+      flash[:notice] = "now you are friend with #{User.where(id: params[:ida].to_i).first.email}"
 
+     redirect_to article_userprof_path
+  end
+def delete_request
+  Friendship.where(friendable_id:   params[:ida], friend_id: current_user.id, pending: nil).first.destroy
+   flash[:notice] = "friend request deleted"
+    redirect_to article_userprof_path
+end
+def all_frinds
+  @all_frinds= current_user.friends
+  
+end
+
+def follow
+
+  Follow.create(follower_id: current_user.id, following_id: params[:id].to_i) 
+
+  redirect_to article_userprof_path
+  
+end
+
+def unfollow
+   Follow.where(follower_id: current_user.id, following_id: params[:id].to_i).first.destroy 
+
+   redirect_to article_userprof_path
+  
+end
   
 
 
