@@ -6,7 +6,8 @@ Rails.application.routes.draw do
 	get "/article/userprof" => "articles#userprofile"
 	get "/article/follo" => "articles#follow"
 	get "/article/unfollo" => "articles#unfollow"
-  devise_for :users
+  devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
+
      root to: "home#index"
 
 resources :articles do
@@ -20,5 +21,6 @@ resources :article do
   end
 end
 
+  match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 
 end

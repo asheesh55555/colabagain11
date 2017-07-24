@@ -61,3 +61,10 @@ gem "select2-rails"
 gem 'amistad', '~> 0.10.2'
 gem 'jquery-rails'
 
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'omniauth-linkedin'
+gem 'omniauth-google-oauth2'
+
+
