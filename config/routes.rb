@@ -23,4 +23,11 @@ end
 
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 
+        resources :conversations, only: [:create] do
+                member do
+                  post :close
+                end
+                resources :messages, only: [:create]
+
+        end
 end

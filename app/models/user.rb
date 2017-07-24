@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :messages
+has_many :conversations, foreign_key: :sender_id
     
         include Amistad::FriendModel
 	has_many :follower_relationships, foreign_key: :following_id, class_name: 'Follow'

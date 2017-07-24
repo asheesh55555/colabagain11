@@ -2,11 +2,12 @@
 <html>
   <head>
     <title>Colabagain</title>
+     
+    
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  
 
  
 <meta charset="utf-8">
@@ -17,7 +18,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
 
   </head>
-
+   <div class="container">
   <body>
   <% if user_signed_in? %>
   <li>
@@ -33,6 +34,8 @@
   <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
 
+
     <%= yield %>
+    </div>
   </body>
 </html>
